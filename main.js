@@ -61,11 +61,11 @@ function checkElement(element) {
     for (var i =0; i < lot.length; i++) {
         for (var j = 0; j < lot[i].length; j++) {
             if (lot[i][j] == element) {
-                return true;
+                return i;
             }
         }
     }
-    return false;
+    return -1;
 }
 
 function removeAllChildNodes(parent) {
@@ -77,9 +77,10 @@ function removeAllChildNodes(parent) {
 function changeColour() {
     for (var j = 0; j < names.length; j++) {
         var i = checkElement(names[j])
-        if (i) {
+        if (i >= 0) {
             var object = namesContainer.getElementsByTagName('p')[j];
             object.style.color = 'green'
+            object.innerText = names[j] + ", Lot " + (i+1);
 
         }
 
@@ -89,13 +90,19 @@ function changeColour() {
 addToDoButton.addEventListener('click', function(){
     if (names.length <= 28)
     {
-        names.push(inputField.value)
-        var paragraph = document.createElement("p")
-        paragraph.classList.add('paragraph-styler')
-        paragraph.innerText = inputField.value;
-        namesContainer.appendChild(paragraph);
+        var inputNames= inputField.value.split(', ');
+        names = names.concat(inputNames);
+        console.log(names);
+
+        for (var i = 0; i < inputNames.length; i++) {
+            var paragraph = document.createElement("p")
+            paragraph.classList.add('paragraph-styler')
+            paragraph.innerText = inputNames[i];
+            namesContainer.appendChild(paragraph);
         
-        changeColour();
+            changeColour();
+        }
+        
         inputField.value = null;
         inputField.focus();
         
