@@ -112,56 +112,87 @@ addToDoButton.addEventListener('click', function(){
 })
 
 EnterButton.addEventListener('click', function(){
-    lot[0].push(inputField2.value)
-    var paragraph = document.createElement("p")
-    paragraph.classList.add('paragraph-styling')
-    paragraph.innerText = inputField2.value;
-    lot1Container.appendChild(paragraph);
-    changeColour();
+    
+    var inputNames= inputField2.value.split(', ');
+        lot[0] = lot[0].concat(inputNames);
+
+    for (var i = 0; i < inputNames.length; i++) {
+        var paragraph = document.createElement("p")
+        paragraph.classList.add('paragraph-styling')
+        paragraph.innerText = inputNames[i];
+        lot1Container.appendChild(paragraph);
+        changeColour();
+    }
     inputField2.value = null;
         inputField2.focus();
 })
 
 EnterButton2.addEventListener('click', function(){
-    lot[1].push(inputField3.value)
-    var paragraph = document.createElement("p")
-    paragraph.classList.add('paragraph-styling')
-    paragraph.innerText = inputField3.value;
-    lot2Container.appendChild(paragraph);
-    changeColour();
+    //lot[1].push(inputField3.value)
+    var inputNames= inputField3.value.split(', ');
+        lot[1] = lot[1].concat(inputNames);
+
+    for (var i = 0; i < inputNames.length; i++) {
+        var paragraph = document.createElement("p")
+        paragraph.classList.add('paragraph-styling')
+        paragraph.innerText = inputNames[i];
+        lot2Container.appendChild(paragraph);
+        changeColour();
+    }
+
     inputField3.value = null;
         inputField3.focus();
 })
 
 EnterButton3.addEventListener('click', function(){
-    lot[2].push(inputField4.value)
-    var paragraph = document.createElement("p")
-    paragraph.classList.add('paragraph-styling')
-    paragraph.innerText = inputField4.value;
-    lot3Container.appendChild(paragraph);
-    changeColour();
+    //lot[2].push(inputField4.value)
+    var inputNames= inputField4.value.split(', ');
+        lot[2] = lot[2].concat(inputNames);
+
+    for (var i = 0; i < inputNames.length; i++) {
+        var paragraph = document.createElement("p")
+        paragraph.classList.add('paragraph-styling')
+        paragraph.innerText = inputNames[i];
+        lot3Container.appendChild(paragraph);
+        changeColour();
+    }
+
     inputField4.value = null;
         inputField4.focus();
 })
 
 EnterButton4.addEventListener('click', function(){
-    lot[3].push(inputField5.value)
-    var paragraph = document.createElement("p")
-    paragraph.classList.add('paragraph-styling')
-    paragraph.innerText = inputField5.value;
-    lot4Container.appendChild(paragraph);
-    changeColour();
+    //lot[3].push(inputField5.value)
+    
+    var inputNames= inputField5.value.split(', ');
+        lot[3] = lot[3].concat(inputNames);
+
+    for (var i = 0; i < inputNames.length; i++) {
+        var paragraph = document.createElement("p")
+        paragraph.classList.add('paragraph-styling')
+        paragraph.innerText = inputNames[i];
+        lot4Container.appendChild(paragraph);
+        changeColour();
+    }
+    
+    
     inputField5.value = null;
         inputField5.focus();
 })
 
 EnterButton5.addEventListener('click', function(){
-    lot[4].push(inputField6.value)
-    var paragraph = document.createElement("p")
-    paragraph.classList.add('paragraph-styling')
-    paragraph.innerText = inputField6.value;
-    lot5Container.appendChild(paragraph);
-    changeColour();
+    //lot[4].push(inputField6.value)
+
+    var inputNames= inputField6.value.split(', ');
+        lot[4] = lot[4].concat(inputNames);
+
+    for (var i = 0; i < inputNames.length; i++) {
+        var paragraph = document.createElement("p")
+        paragraph.classList.add('paragraph-styling')
+        paragraph.innerText = inputNames[i];
+        lot5Container.appendChild(paragraph);
+        changeColour();
+    }
     inputField6.value = null;
         inputField6.focus();
 })
