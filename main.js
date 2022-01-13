@@ -90,7 +90,7 @@ function changeColour() {
 addToDoButton.addEventListener('click', function(){
     if (names.length <= 28)
     {
-        var inputNames= inputField.value.split(', ');
+        var inputNames= inputField.value.split('.');
         names = names.concat(inputNames);
         console.log(names);
 
@@ -113,7 +113,7 @@ addToDoButton.addEventListener('click', function(){
 
 EnterButton.addEventListener('click', function(){
     
-    var inputNames= inputField2.value.split(', ');
+    var inputNames= inputField2.value.split('.');
         lot[0] = lot[0].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -129,7 +129,7 @@ EnterButton.addEventListener('click', function(){
 
 EnterButton2.addEventListener('click', function(){
     //lot[1].push(inputField3.value)
-    var inputNames= inputField3.value.split(', ');
+    var inputNames= inputField3.value.split('. ');
         lot[1] = lot[1].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -146,7 +146,7 @@ EnterButton2.addEventListener('click', function(){
 
 EnterButton3.addEventListener('click', function(){
     //lot[2].push(inputField4.value)
-    var inputNames= inputField4.value.split(', ');
+    var inputNames= inputField4.value.split('.');
         lot[2] = lot[2].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -164,7 +164,7 @@ EnterButton3.addEventListener('click', function(){
 EnterButton4.addEventListener('click', function(){
     //lot[3].push(inputField5.value)
     
-    var inputNames= inputField5.value.split(', ');
+    var inputNames= inputField5.value.split('.');
         lot[3] = lot[3].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -183,7 +183,7 @@ EnterButton4.addEventListener('click', function(){
 EnterButton5.addEventListener('click', function(){
     //lot[4].push(inputField6.value)
 
-    var inputNames= inputField6.value.split(', ');
+    var inputNames= inputField6.value.split('.');
         lot[4] = lot[4].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
