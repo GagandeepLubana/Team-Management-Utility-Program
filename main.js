@@ -32,23 +32,26 @@ let blue = [];
 let redContainer = document.getElementById('redcontainer')
 let blueContainer = document.getElementById('bluecontainer')
 
-function randColour() {
-    var number = Math.round(Math.random() + 1)
+function randColour(i) {
+    var number = Math.round((Math.random() * i))
     return number;
 }
 
 function rearrangeLot(lottery) {
     if (lottery.length > 0) {
-        for (var i=0; i < lottery.length; i++){
-            var colour = randColour();
-            console.log(colour)
-            if (colour == 1) {
-                red.push(lottery[i])
+        var j = lottery.length;
+        for (var i=0; i < j; i++){
+            var index = randColour(lottery.length-1);
+            console.log(index)
+            console.log(lottery)
+            if ((i % 2) == 0) {
+                red.push(lottery[index])
     
             }
             else {
-                blue.push(lottery[i])
+                blue.push(lottery[index])
             }
+            lottery.splice(index, 1)
     
         }
 
@@ -91,8 +94,17 @@ addToDoButton.addEventListener('click', function(){
     if (names.length <= 28)
     {
         var inputNames= inputField.value.split('.');
+        console.log(inputNames);
+        for (var i = 0; i < inputNames.length; i++) {
+            inputNames[i] = inputNames[i].replace(/\d+/g, '');
+            inputNames[i] = inputNames[i].replace(/\s+/g, '');
+            if (inputNames[i].length <= 1){
+                inputNames.splice(i, 1)
+            }
+        }
+        console.log(inputNames);
         names = names.concat(inputNames);
-        console.log(names);
+        
 
         for (var i = 0; i < inputNames.length; i++) {
             var paragraph = document.createElement("p")
@@ -114,6 +126,13 @@ addToDoButton.addEventListener('click', function(){
 EnterButton.addEventListener('click', function(){
     
     var inputNames= inputField2.value.split('.');
+    for (var i = 0; i < inputNames.length; i++) {
+        inputNames[i] = inputNames[i].replace(/\d+/g, '');
+        inputNames[i] = inputNames[i].replace(/\s+/g, '');
+        if (inputNames[i].length <= 1){
+            inputNames.splice(i, 1)
+        }
+    }
         lot[0] = lot[0].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -129,7 +148,14 @@ EnterButton.addEventListener('click', function(){
 
 EnterButton2.addEventListener('click', function(){
     //lot[1].push(inputField3.value)
-    var inputNames= inputField3.value.split('. ');
+    var inputNames= inputField3.value.split('.');
+    for (var i = 0; i < inputNames.length; i++) {
+        inputNames[i] = inputNames[i].replace(/\d+/g, '');
+        inputNames[i] = inputNames[i].replace(/\s+/g, '');
+        if (inputNames[i].length <= 1){
+            inputNames.splice(i, 1)
+        }
+    }
         lot[1] = lot[1].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -147,6 +173,13 @@ EnterButton2.addEventListener('click', function(){
 EnterButton3.addEventListener('click', function(){
     //lot[2].push(inputField4.value)
     var inputNames= inputField4.value.split('.');
+    for (var i = 0; i < inputNames.length; i++) {
+        inputNames[i] = inputNames[i].replace(/\d+/g, '');
+        inputNames[i] = inputNames[i].replace(/\s+/g, '');
+        if (inputNames[i].length <= 1){
+            inputNames.splice(i, 1)
+        }
+    }
         lot[2] = lot[2].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -165,6 +198,13 @@ EnterButton4.addEventListener('click', function(){
     //lot[3].push(inputField5.value)
     
     var inputNames= inputField5.value.split('.');
+    for (var i = 0; i < inputNames.length; i++) {
+        inputNames[i] = inputNames[i].replace(/\d+/g, '');
+        inputNames[i] = inputNames[i].replace(/\s+/g, '');
+        if (inputNames[i].length <= 1){
+            inputNames.splice(i, 1)
+        }
+    }
         lot[3] = lot[3].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -184,6 +224,13 @@ EnterButton5.addEventListener('click', function(){
     //lot[4].push(inputField6.value)
 
     var inputNames= inputField6.value.split('.');
+    for (var i = 0; i < inputNames.length; i++) {
+        inputNames[i] = inputNames[i].replace(/\d+/g, '');
+        inputNames[i] = inputNames[i].replace(/\s+/g, '');
+        if (inputNames[i].length <= 1){
+            inputNames.splice(i, 1)
+        }
+    }
         lot[4] = lot[4].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -219,12 +266,14 @@ rearrangeButton.addEventListener('click', function(){
     var r = document.createElement('p')
     r.classList.add('paragraph-styling')
     for (var i = 0; i < red.length; i++) {
+        red[i] = (i+1).toString() + ". " + red[i];
         r.innerText += " " + red[i];
     }
     redContainer.appendChild(r)
     var b = document.createElement('p')
     b.classList.add('paragraph-styling')
     for (var i = 0; i < blue.length; i++) {
+        blue[i] = (i+1).toString() + ". " + blue[i];
         b.innerText = b.innerText + " " + blue[i];
     }
     blueContainer.appendChild(b)
