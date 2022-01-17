@@ -26,6 +26,7 @@ let rearrangeButton = document.getElementById('rearrange')
 
 let names = [];
 let lot = [[], [], [], [], []];
+let og = [];
 let colours = [0, 1];
 let red = [];
 let blue = [];
@@ -37,13 +38,19 @@ function randColour(i) {
     return number;
 }
 
-function rearrangeLot(lottery) {
-    if (lottery.length > 0) {
+function rearrangeLot(lotter) {
+
+    
+
+    if (lotter.length > 0) {
+        var lottery = [];
+        for (var i =0; i < lotter.length; i++) {
+            lottery.push(lotter[i])
+        }
+        console.log(lottery)
         var j = lottery.length;
         for (var i=0; i < j; i++){
             var index = randColour(lottery.length-1);
-            console.log(index)
-            console.log(lottery)
             if ((i % 2) == 0) {
                 red.push(lottery[index])
     
@@ -52,7 +59,7 @@ function rearrangeLot(lottery) {
                 blue.push(lottery[index])
             }
             lottery.splice(index, 1)
-    
+            
         }
 
     }
@@ -94,7 +101,7 @@ addToDoButton.addEventListener('click', function(){
     if (names.length <= 28)
     {
         var inputNames= inputField.value.split('.');
-        console.log(inputNames);
+       
         for (var i = 0; i < inputNames.length; i++) {
             inputNames[i] = inputNames[i].replace(/\d+/g, '');
             inputNames[i] = inputNames[i].replace(/\s+/g, '');
@@ -102,7 +109,8 @@ addToDoButton.addEventListener('click', function(){
                 inputNames.splice(i, 1)
             }
         }
-        console.log(inputNames);
+        inputNames[0] = inputNames[0].replace(/\d+/g, '');
+        inputNames[0] = inputNames[0].replace(/\s+/g, '');
         names = names.concat(inputNames);
         
 
@@ -133,8 +141,10 @@ EnterButton.addEventListener('click', function(){
             inputNames.splice(i, 1)
         }
     }
-        lot[0] = lot[0].concat(inputNames);
-
+    inputNames[0] = inputNames[0].replace(/\d+/g, '');
+    inputNames[0] = inputNames[0].replace(/\s+/g, '');
+    lot[0] = lot[0].concat(inputNames);
+   
     for (var i = 0; i < inputNames.length; i++) {
         var paragraph = document.createElement("p")
         paragraph.classList.add('paragraph-styling')
@@ -143,7 +153,9 @@ EnterButton.addEventListener('click', function(){
         changeColour();
     }
     inputField2.value = null;
-        inputField2.focus();
+    inputField2.focus();
+    console.log(lot)
+    
 })
 
 EnterButton2.addEventListener('click', function(){
@@ -156,7 +168,9 @@ EnterButton2.addEventListener('click', function(){
             inputNames.splice(i, 1)
         }
     }
-        lot[1] = lot[1].concat(inputNames);
+    inputNames[0] = inputNames[0].replace(/\d+/g, '');
+    inputNames[0] = inputNames[0].replace(/\s+/g, '');    
+    lot[1] = lot[1].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
         var paragraph = document.createElement("p")
@@ -180,7 +194,9 @@ EnterButton3.addEventListener('click', function(){
             inputNames.splice(i, 1)
         }
     }
-        lot[2] = lot[2].concat(inputNames);
+    inputNames[0] = inputNames[0].replace(/\d+/g, '');
+    inputNames[0] = inputNames[0].replace(/\s+/g, '');    
+    lot[2] = lot[2].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
         var paragraph = document.createElement("p")
@@ -205,6 +221,8 @@ EnterButton4.addEventListener('click', function(){
             inputNames.splice(i, 1)
         }
     }
+        inputNames[0] = inputNames[0].replace(/\d+/g, '');
+        inputNames[0] = inputNames[0].replace(/\s+/g, '');
         lot[3] = lot[3].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
@@ -231,7 +249,9 @@ EnterButton5.addEventListener('click', function(){
             inputNames.splice(i, 1)
         }
     }
-        lot[4] = lot[4].concat(inputNames);
+    inputNames[0] = inputNames[0].replace(/\d+/g, '');
+    inputNames[0] = inputNames[0].replace(/\s+/g, '');
+    lot[4] = lot[4].concat(inputNames);
 
     for (var i = 0; i < inputNames.length; i++) {
         var paragraph = document.createElement("p")
@@ -245,7 +265,8 @@ EnterButton5.addEventListener('click', function(){
 })
 
 rearrangeButton.addEventListener('click', function(){
-    
+    console.log(lot)
+    lot = lot;
     
     removeAllChildNodes(redContainer);
     
@@ -256,6 +277,7 @@ rearrangeButton.addEventListener('click', function(){
 
 
     for (var i=0; i < 5; i++) {
+        
         if (lot[i].length > 0) {
             rearrangeLot(lot[i])
 
@@ -278,3 +300,4 @@ rearrangeButton.addEventListener('click', function(){
     }
     blueContainer.appendChild(b)
 })
+
